@@ -22,19 +22,19 @@ class Contact extends Component {
                 email: false
             }
         }
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this); {/* bind กำหนดขอบเขตว่าอยู่ในclassนี้*/}
         this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleBlur = this.handleBlur.bind(this);
+        this.handleBlur = this.handleBlur.bind(this); {/**check ว่า focus อยู่ใน field มั้ย */}
 
         
     }
-    handleBlur = (field) => (evt) => {
+    handleBlur = (field) => (evt) => {  {/*ตอนแรก touched เป็น false พอกดข้างนอก field ก้จะเป็น true*/}
         this.setState({
             touched: { ...this.state.touched, [field]: true }
         });
     }
-
-    validate(firstname, lastname, telnum, email) {
+    
+    validate(firstname, lastname, telnum, email) { {/**check ว่าถ้า touched เป็น true (กดนอกfield) แล้วถึงเช้ค size character บลาๆ*/}
         const errors = {
             firstname: '',
             lastname: '',
@@ -61,14 +61,15 @@ class Contact extends Component {
 
         return errors;
     }
+    
 
     handleInputChange(event) {
         const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
+        const value = target.type === 'checkbox' ? target.checked : target.value; {/**checkว่าค่าที่เข้ามาเป็น checkbox มั้ย ถ้าใช่ก้เป็น cheked ถ้าไม่ก็เป็นค่า text ปกติ */}
+        const name = target.name; {/**name ใน input */}
     
         this.setState({
-          [name]: value
+          [name]: value 
         });
     }
 
