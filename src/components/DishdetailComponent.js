@@ -19,7 +19,8 @@ function renderDish(dish) {
 }
 function renderComments(detail,comments){  
     const printcomment = comments.filter((el)=>el.dishId===detail.id)
-    return(
+    if(detail!=null){
+        return(
         <Card>
             <CardTitle><h4>Comment</h4></CardTitle>
             <CardBody>
@@ -34,6 +35,10 @@ function renderComments(detail,comments){
             </CardBody>
         </Card>
     )
+    }else{
+        <div></div>
+    }
+    
 }   
 
 function DishDetail({detail,comments}) {
